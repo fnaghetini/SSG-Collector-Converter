@@ -51,16 +51,20 @@ def __create_df_exec_columns(df_exec, file_name):
     return df_exec
 
 
-def __generate_surface_samples_template(df_prog, df_exec):
+def __generate_surface_samples_template(sample_type, df_prog, df_exec):
     df_surface_samples = df_prog[surface_samples_core_cols]
     df_surface_samples = df_surface_samples.merge(df_exec[surface_samples_exec_cols], on=surface_samples_pk, how='left')
+    df_surface_samples['campaign'] = current_year
+    df_surface_samples['MEDIUM_CODE'] = sample_type
+    df_surface_samples['REGION_CODE'] = region_code
     return df_surface_samples.sort_values(by=[surface_samples_pk])
 
 
-def __generate_sample_coordinate_template(df_prog, df_locd, df_exec):
+def __generate_sample_coordinate_template(grid_type, df_prog, df_locd, df_exec):
     df_sample_coordinate = pd.concat([
         df_prog[sample_coordinate_cols],
         df_locd[sample_coordinate_cols],
         df_exec[sample_coordinate_cols]
     ])
+    df_sample_coordinate['GRID_TYPE_CODE'] = grid_type
     return df_sample_coordinate.sort_values(by=sample_coordinate_pk)

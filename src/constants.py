@@ -1,5 +1,11 @@
 from datetime import datetime
 
+datum = ['UTM69-22S']
+region_code = 'SSG'
+medium_code = {'Plano de Fogo': 'PF',
+               'Frente de Lavra': 'FL',
+               'Pilha': 'TR'}
+
 df_prog_input_cols = ['sample_seq', 'drill_pattern', 'elevation', 'eastwest_decimal', 'northsouth_decimal']
 df_locd_input_cols = ['locd_code', 'sample_seq', 'elevation', 'eastwest_decimal', 'northsouth_decimal']
 df_exec_input_cols = ['exec_code', 'sample_seq', 'elevation', 'eastwest_decimal', 'northsouth_decimal']
