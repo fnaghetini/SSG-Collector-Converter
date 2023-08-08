@@ -7,7 +7,7 @@ warnings.filterwarnings("ignore")
 
 root = Tk()
 root.title("Vale Sossego - Curto Prazo")
-root.geometry("495x270")
+root.geometry("495x307")
 root.configure(background='white')
 
 ######################################################################################
@@ -15,6 +15,13 @@ root.configure(background='white')
 ######################################################################################
 
 txt_title = create_title_label(root, text="Conversor de Dados da Coletora")
+
+txt_campaign = Label(root, text="Ano:", width=30, bg='white', fg='black', justify=LEFT, anchor='w', padx=10)
+campaign_var = StringVar(root)
+campaign_var.set(str(datetime.now().year))
+pkl_campaign = OptionMenu(root, campaign_var, *campaigns)
+pkl_campaign.config(height=1, width=34, bg='white', highlightcolor='white', highlightbackground='white')
+
 
 txt_datum = Label(root, text="Datum:", width=30, bg='white', fg='black', justify=LEFT, anchor='w', padx=10)
 datum_var = StringVar(root)
@@ -30,9 +37,8 @@ pkl_medium_code.config(height=1, width=34, bg='white', highlightcolor='white', h
 
 btn_generate_templates = Button(root, text="Gerar Templates", width=25, justify=CENTER,
                                 cursor='hand2', font=('Tahoma', '9', 'bold'),
-                                command=lambda: generate_templates(datum_var, medium_code_var))
+                                command=lambda: generate_templates(campaign_var, datum_var, medium_code_var))
 
-# Versão do Aplicativo
 txt_version = create_app_version_label(root, text="@Datamine Software v0.0.1")
 
 ######################################################################################
@@ -40,11 +46,13 @@ txt_version = create_app_version_label(root, text="@Datamine Software v0.0.1")
 ######################################################################################
 
 txt_title.grid(row=0, column=0, columnspan=2, pady=20)
-txt_datum.grid(row=1, column=0, pady=10, sticky=W)
-pkl_datum.grid(row=1, column=1)
-txt_medium_code.grid(row=2, column=0, pady=10, sticky=W)
-pkl_medium_code.grid(row=2, column=1)
-btn_generate_templates.grid(row=3, column=0, columnspan=2, pady=25)
-txt_version.grid(row=4, column=1, sticky=E)
+txt_campaign.grid(row=1, column=0, pady=10, sticky=W)
+pkl_campaign.grid(row=1, column=1)
+txt_datum.grid(row=2, column=0, pady=10, sticky=W)
+pkl_datum.grid(row=2, column=1)
+txt_medium_code.grid(row=3, column=0, pady=10, sticky=W)
+pkl_medium_code.grid(row=3, column=1)
+btn_generate_templates.grid(row=4, column=0, columnspan=2, pady=25)
+txt_version.grid(row=5, column=1, sticky=E)
 
 root.mainloop()

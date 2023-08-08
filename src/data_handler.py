@@ -22,39 +22,39 @@ def __generate_df_exec(df):
     return df_exec
 
 
-def __create_df_prog_columns(df_prog):
-    df_prog['sample_number'] = df_prog.apply(lambda row: __get_sample_number(row), axis=1)
+def __create_df_prog_columns(df_prog, year):
+    df_prog['sample_number'] = df_prog.apply(lambda row: __get_sample_number(row, year), axis=1)
     df_prog['project_number'] = df_prog.apply(lambda row: __get_project_number(row), axis=1)
     df_prog['coord_type_code'] = 'PROG'
     df_prog['bank'] = df_prog.apply(lambda row: __get_bank_code(row), axis=1)
-    df_prog['fire_plan'] = df_prog.apply(lambda row: __get_fire_plan(row), axis=1)
+    df_prog['fire_plan'] = df_prog.apply(lambda row: __get_fire_plan(row, year), axis=1)
     return df_prog
 
 
-def __create_df_locd_columns(df_locd, file_name):
+def __create_df_locd_columns(df_locd, file_name, year):
     df_locd['drill_pattern'] = file_name
-    df_locd['sample_number'] = df_locd.apply(lambda row: __get_sample_number(row), axis=1)
+    df_locd['sample_number'] = df_locd.apply(lambda row: __get_sample_number(row, year), axis=1)
     df_locd['project_number'] = df_locd.apply(lambda row: __get_project_number(row), axis=1)
     df_locd['coord_type_code'] = 'LOCD'
-    df_locd['fire_plan'] = df_locd.apply(lambda row: __get_fire_plan(row), axis=1)
+    df_locd['fire_plan'] = df_locd.apply(lambda row: __get_fire_plan(row, year), axis=1)
     return df_locd
 
 
-def __create_df_exec_columns(df_exec, file_name):
+def __create_df_exec_columns(df_exec, file_name, year):
     df_exec['drill_pattern'] = file_name
-    df_exec['sample_number'] = df_exec.apply(lambda row: __get_sample_number(row), axis=1)
+    df_exec['sample_number'] = df_exec.apply(lambda row: __get_sample_number(row, year), axis=1)
     df_exec['project_number'] = df_exec.apply(lambda row: __get_project_number(row), axis=1)
     df_exec['coord_type_code'] = 'EXEC'
-    df_exec['fire_plan'] = df_exec.apply(lambda row: __get_fire_plan(row), axis=1)
-    df_exec['sampling_date'] = df_exec.apply(lambda row: __get_sampling_date(row), axis=1)
+    df_exec['fire_plan'] = df_exec.apply(lambda row: __get_fire_plan(row, year), axis=1)
+    df_exec['sampling_date'] = df_exec.apply(lambda row: __get_sampling_date(row, year), axis=1)
     df_exec['sampler_1'] = df_exec.apply(lambda row: __get_sampler_code(row), axis=1)
     return df_exec
 
 
-def __generate_surface_samples_template(sample_type, df_prog, df_exec):
+def __generate_surface_samples_template(sample_type, year, df_prog, df_exec):
     df_surface_samples = df_prog[surface_samples_core_cols]
     df_surface_samples = df_surface_samples.merge(df_exec[surface_samples_exec_cols], on=surface_samples_pk, how='left')
-    df_surface_samples['campaign'] = current_year
+    df_surface_samples['campaign'] = year
     df_surface_samples['MEDIUM_CODE'] = sample_type
     df_surface_samples['REGION_CODE'] = region_code
     return df_surface_samples.sort_values(by=[surface_samples_pk])

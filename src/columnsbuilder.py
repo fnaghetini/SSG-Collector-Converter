@@ -27,21 +27,19 @@ def __get_sample_sequential(row):
     return str(row['sample_seq'].zfill(4))
 
 
-def __get_sampling_date(row):
+def __get_sampling_date(row, year):
     day_and_month = str(row['exec_code']).split('_')[1][:4]
     day = day_and_month[:2]
     month = day_and_month[2:]
-    year = current_year
-    return f"{day}/{month}/{year}"
+    return f"{day}/{month}/{year.get()}"
 
 
 def __get_sampler_code(row):
-    raw_sampler_code = str(row['exec_code']).split('_')[1][4:6]
-    return sampler_codes[raw_sampler_code]
+    return str(row['exec_code']).split('_')[1][4:6]
 
 
-def __get_sample_number(row):
-    year = current_year[2:]
+def __get_sample_number(row, year):
+    year = year.get()[2:]
     pit = __get_pit_numeric_code(row)
     bank = __get_bank_code(row)
     polygon = __get_polygon_code(row)
@@ -49,8 +47,8 @@ def __get_sample_number(row):
     return f"{year}_{pit}{bank}{polygon}-{seq}"
 
 
-def __get_fire_plan(row):
-    year = current_year[2:]
+def __get_fire_plan(row, year):
+    year = year.get()[2:]
     pit = __get_pit_numeric_code(row)
     bank = __get_bank_code(row)
     polygon = __get_polygon_code(row)

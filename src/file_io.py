@@ -24,4 +24,3 @@ def __read_csv(file):
 
 def __save_as_csv(table, path):
     return table.to_csv(path, index=False, encoding='utf-8-sig')
-

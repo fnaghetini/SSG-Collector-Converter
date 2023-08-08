@@ -1,6 +1,7 @@
 from datetime import datetime
 
-datum = ['UTM69-22S']
+campaigns = [str(year) for year in list(range(2000, 2036))]
+datum = ['UTM69-22S', 'SIRGAS2000:']
 region_code = 'SSG'
 medium_code = {'Plano de Fogo': 'PF',
                'Frente de Lavra': 'FL',
@@ -23,5 +24,4 @@ project_codes = {'E': ['SEQ', '1'],
                  'P': ['PIS', '3'],
                  'M': ['MAT', '4']}
 
-sampler_codes = {'WS': 'WDS',
-                 'RP': 'RNN'}
+

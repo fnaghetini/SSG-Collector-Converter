@@ -6,7 +6,7 @@ from src.data_handler import __create_df_prog_columns, __create_df_locd_columns,
 from src.data_handler import __generate_surface_samples_template, __generate_sample_coordinate_template
 
 
-def generate_templates(datum_var, medium_code_var):
+def generate_templates(campaign_var, datum_var, medium_code_var):
     folder_path = __select_directory()
     all_csv_files = __get_input_files_list(folder_path, 'csv')
     valid_input_files = [file for file in all_csv_files
@@ -21,16 +21,19 @@ def generate_templates(datum_var, medium_code_var):
 
             # Dados programados
             df_prog = __generate_df_prog(df, file_name)
-            df_prog = __create_df_prog_columns(df_prog)
+            df_prog = __create_df_prog_columns(df_prog, campaign_var)
             # Dados locados
             df_locd = __generate_df_locd(df)
-            df_locd = __create_df_locd_columns(df_locd, file_name)
+            df_locd = __create_df_locd_columns(df_locd, file_name, campaign_var)
             # Dados executados
             df_exec = __generate_df_exec(df)
-            df_exec = __create_df_exec_columns(df_exec, file_name)
+            df_exec = __create_df_exec_columns(df_exec, file_name, campaign_var)
 
             # Geração do template surface samples
-            surface_samples = __generate_surface_samples_template(medium_code[medium_code_var.get()], df_prog, df_exec)
+            surface_samples = __generate_surface_samples_template(medium_code[medium_code_var.get()],
+                                                                  campaign_var.get(),
+                                                                  df_prog,
+                                                                  df_exec)
             # Geração do template surface samples
             sample_coordinates = __generate_sample_coordinate_template(datum_var.get(), df_prog, df_locd, df_exec)
 
