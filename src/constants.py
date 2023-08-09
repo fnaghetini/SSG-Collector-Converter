@@ -1,6 +1,7 @@
 from datetime import datetime
 
 campaigns = [str(year) for year in list(range(2000, 2036))]
+assay_sample_type = 'OR'
 datum = ['UTM69-22S', 'SIRGAS2000:']
 region_code = 'SSG'
 medium_code = {'Plano de Fogo': 'PF',

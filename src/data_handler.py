@@ -54,9 +54,10 @@ def __create_df_exec_columns(df_exec, file_name, year):
 def __generate_surface_samples_template(sample_type, year, df_prog, df_exec):
     df_surface_samples = df_prog[surface_samples_core_cols]
     df_surface_samples = df_surface_samples.merge(df_exec[surface_samples_exec_cols], on=surface_samples_pk, how='left')
+    df_surface_samples['assay_sample_type_code'] = assay_sample_type
     df_surface_samples['campaign'] = year
-    df_surface_samples['MEDIUM_CODE'] = sample_type
-    df_surface_samples['REGION_CODE'] = region_code
+    df_surface_samples['medium_code'] = sample_type
+    df_surface_samples['region_code'] = region_code
     return df_surface_samples.sort_values(by=[surface_samples_pk])
 
 
