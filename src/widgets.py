@@ -3,7 +3,7 @@ from tkinter import *
 
 def create_title_label(root, text=""):
     font = ('Tahoma', '12', 'bold')
-    return Label(root, text=text, width=45, height=2, bg='#00939A', fg='white', font=font)
+    return Label(root, text=text, width=47, height=2, bg='#00939A', fg='white', font=font)
 
 
 def create_subtitle_label(root, text=""):

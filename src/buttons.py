@@ -14,7 +14,7 @@ def generate_prog_templates(campaign_var, datum_var, medium_code_var):
     valid_input_files = [file for file in all_txt_files
                          if '_samples.csv' not in file and '_coordinates.csv' not in file]
     if len(valid_input_files) == 0:
-        messagebox.showerror('Erro', f"Não há nenhum arquivo .csv na pasta {folder_path}.")
+        messagebox.showerror('Erro', f"Não há nenhum arquivo .txt na pasta {folder_path}.")
         return
     else:
         for file in valid_input_files:
