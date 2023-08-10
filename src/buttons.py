@@ -18,10 +18,8 @@ def generate_prog_templates(campaign_var, datum_var, medium_code_var):
         return
     else:
         for file in valid_input_files:
-            file_name = __get_path_leaf(file)[:-4]
-            df = __read_txt(file)
-
-            df_prog = __generate_df_prog(df, file_name)
+            df_prog = __read_txt(file)
+            df_prog.columns = df_prog_input_cols
             df_prog = __create_df_prog_columns(df_prog, campaign_var)
 
             surface_samples = __generate_surface_samples_prog_template(medium_code[medium_code_var.get()],
@@ -65,9 +63,8 @@ def generate_locd_exec_templates(campaign_var, datum_var, medium_code_var):
 
             sample_coordinates = __generate_sample_coordinate_locd_exec_template(datum_var.get(), df_locd, df_exec)
 
-            # Exportação
-            __save_as_csv(surface_samples, f'{file[:-5]}_samples.csv')
-            __save_as_csv(sample_coordinates, f'{file[:-5]}_coordinates.csv')
+            __save_as_csv(surface_samples, f'{file[:-5]}_locd_exec_samples.csv')
+            __save_as_csv(sample_coordinates, f'{file[:-5]}_locd_exec_coordinates.csv')
 
         messagebox.showinfo('Processo Concluído',
                             f'Templates de amostras locadas e executadas gerados com sucesso na pasta {folder_path}.')
