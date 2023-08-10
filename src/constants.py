@@ -1,6 +1,9 @@
 from datetime import datetime
 
-campaigns = [str(year) for year in list(range(2000, 2036))]
+campaigns = [str(year) for year in list(range(2003, 2031))]
+coord_codes = {'Programada': 'PROG',
+               'Locada': 'LOCD',
+               'Executada': 'EXEC'}
 assay_sample_type = 'OR'
 datum = ['UTM69-22S', 'SIRGAS2000:']
 region_code = 'SSG'
