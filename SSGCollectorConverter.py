@@ -35,7 +35,7 @@ medium_code_var.set(list(medium_code.keys())[0])
 pkl_medium_code = OptionMenu(root, medium_code_var, *medium_code)
 pkl_medium_code.config(height=1, width=34, bg='white', highlightcolor='white', highlightbackground='white')
 
-btn_generate_prog_templates = Button(root, text="Gerar Templates (EXEC)", width=25, justify=CENTER,
+btn_generate_prog_templates = Button(root, text="Gerar Templates (PROG)", width=25, justify=CENTER,
                                      cursor='hand2', font=('Tahoma', '9', 'bold'), bg='#00939A', fg='white',
                                      command=lambda: generate_prog_templates(campaign_var,
                                                                              datum_var,
