@@ -32,12 +32,20 @@ def __create_df_prog_columns(df_prog, year):
 
 
 def __create_df_locd_columns(df_locd, file_name, year):
-    df_locd['drill_pattern'] = file_name
-    df_locd['sample_number'] = df_locd.apply(lambda row: __get_sample_number(row, year), axis=1)
-    df_locd['project_number'] = df_locd.apply(lambda row: __get_project_number(row), axis=1)
-    df_locd['coord_type_code'] = coord_codes['Locada']
-    df_locd['fire_plan'] = df_locd.apply(lambda row: __get_fire_plan(row, year), axis=1)
-    return df_locd
+    if len(df_locd) > 0:
+        df_locd['drill_pattern'] = file_name
+        df_locd['sample_number'] = df_locd.apply(lambda row: __get_sample_number(row, year), axis=1)
+        df_locd['project_number'] = df_locd.apply(lambda row: __get_project_number(row), axis=1)
+        df_locd['coord_type_code'] = coord_codes['Locada']
+        df_locd['fire_plan'] = df_locd.apply(lambda row: __get_fire_plan(row, year), axis=1)
+        return df_locd
+    else:
+        df_locd['drill_pattern'] = None
+        df_locd['sample_number'] = None
+        df_locd['project_number'] = None
+        df_locd['coord_type_code'] = None
+        df_locd['fire_plan'] = None
+        return df_locd
 
 
 def __create_df_exec_columns(df_exec, file_name, year):
@@ -77,6 +85,11 @@ def __generate_surface_samples_locd_exec_template(sample_type, year, df_prog, df
 
 
 def __generate_sample_coordinate_locd_exec_template(grid_type, df_locd, df_exec):
-    df_sample_coordinate = pd.concat([df_locd[sample_coordinate_cols], df_exec[sample_coordinate_cols]])
-    df_sample_coordinate['GRID_TYPE_CODE'] = grid_type
-    return df_sample_coordinate.sort_values(by=sample_coordinate_pk)
+    if len(df_locd) > 0:
+        df_sample_coordinate = pd.concat([df_locd[sample_coordinate_cols], df_exec[sample_coordinate_cols]])
+        df_sample_coordinate['GRID_TYPE_CODE'] = grid_type
+        return df_sample_coordinate.sort_values(by=sample_coordinate_pk)
+    else:
+        df_sample_coordinate = df_exec[sample_coordinate_cols]
+        df_sample_coordinate['GRID_TYPE_CODE'] = grid_type
+        return df_sample_coordinate.sort_values(by=sample_coordinate_pk)
