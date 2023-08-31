@@ -7,7 +7,7 @@ Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sosseg
  A figura abaixo mostra a interface do aplicativo:
 
  <p align="center">
-  <img src="img/app_ui.png" width="400"><br>
+  <img src="img/app_ui.png" width="500"><br>
 </p>
 
  - No campo **Ano**, selecione o ano em que o plano de perfuração foi realizado
