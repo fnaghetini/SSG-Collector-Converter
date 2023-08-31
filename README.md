@@ -14,7 +14,7 @@ Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sosseg
  - No campo **Datum**, selecione o datum adequado das coordenadas adquiridas em campo
  - No campo **Tipo de Amostra**, selecione o tipo de amostra em questão
 
-### Gerando templates - Amostras Programadas
+### Gerando Templates - Amostras Programadas
 1. Para gerar os templates de amostras programadas, clique no botão **Gerar Templates (PROG)**;
 2. Na janela do Explorador de Arquivos do Windows, selecione a pasta que contenha os arquivos .txt da coletora, ou seja, aqueles que contém apenas as coordenadas PROGRAMADAS;
 3. Se não ocorrer nenhum erro, serão gerados dois templates por arquivo .txt na mesma pasta selecionada no item anterior:
@@ -23,7 +23,7 @@ Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sosseg
 
 **ATENÇÃO:** A pasta selecionada no item 2 deve conter apenas arquivos .txt no formato da coletora, caso contrário ocorrerá erro na execução do aplicativo.
 
-### Gerando templates - Amostras Locadas e Executadas
+### Gerando Templates - Amostras Locadas e Executadas
 1. Para gerar os templates de amostras locadas e executadas, clique no botão **Gerar Templates (LOCD e EXEC)**;
 2. Na janela do Explorador de Arquivos do Windows, selecione a pasta que contenha os arquivos .csv da coletora, ou seja, aqueles que contém apenas as coordenadas LOCADAS e EXECUTADAS;
 3. Se não ocorrer nenhum erro, serão gerados dois templates por arquivo .csv na mesma pasta selecionada no item anterior:
