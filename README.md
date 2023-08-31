@@ -6,7 +6,9 @@ Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sosseg
 ## Utilização do Aplicativo
  A figura abaixo mostra a interface do aplicativo:
 
- [app_ui](https://github.com/fnaghetini/SSG-Collector-Converter/edit/main/img/app_ui.png)
+ <p align="center">
+  <img src="img/app_ui.png" width="400"><br>
+</p>
 
  - No campo **Ano**, selecione o ano em que o plano de perfuração foi realizado
  - No campo **Datum**, selecione o datum adequado das coordenadas adquiridas em campo
