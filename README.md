@@ -36,13 +36,27 @@ Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sosseg
 As seguintes premissas foram acordadas para o desenvolvimento do aplicativo:
 
 - O nome dos arquivos da coletora (.txt e .csv) sempre é igual ao nome do plano de perfuração.
-  - **Exemplo**: E6_-152_012a.txt e E6_-152_012a.csv
-- O usuário sempre gerará o template de **amostras programadas** a partir do arquivo **.txt** da coletora.
-- O usuário sempre gerará o template de **amostras locadas e executadas** a partir do arquivo **.csv** gerado pela coletora.
+  - *Exemplo*: E6_-152_012a.txt e E6_-152_012a.csv
+- O usuário sempre gerará os templates de **amostras programadas** a partir de **arquivos .txt** da coletora.
+- O usuário sempre gerará o template de **amostras locadas e executadas** a partir de **arquivos .csv** gerado pela coletora.
 - A pasta selecionada para gerar os templates de **amostras programadas** deve conter apenas arquivos .txt no padrão da coletora.
 - A pasta selecionada para gerar os templates de **amostras locadas e executadas** deve conter apenas arquivos .csv no padrão da coletora.
-- Ao clicar no botão `Gerar Templates (PROG)`, são gerados sempre dois templates (.csv) para cada arquivo (.txt) existente na pasta selecionada:
+- Ao clicar no botão `Gerar Templates (PROG)`, são gerados sempre dois templates (.csv) para cada arquivo da coletora (.txt) existente na pasta selecionada:
   - **Samples**: contém os dados do cabeçalho das amostras.
     - Nomenclatura: *Nome do plano de perfuração + _prog_samples.csv*
   - **Coordinates**: contém os dados de coordenadas PROGRAMADAS das amostras.
     - Nomenclatura: *Nome do plano de perfuração + _prog_coordinates.csv*
+- Ao clicar no botão `Gerar Templates (LOCD e EXEC)`, são gerados sempre dois templates (.csv) para cada arquivo da coletora (.csv) existente na pasta selecionada:
+  - **Samples**: contém os dados do cabeçalho das amostras.
+    - Nomenclatura: *Nome do plano de perfuração + _locd_exec_samples.csv*
+  - **Coordinates**: contém os dados de coordenadas PROGRAMADAS das amostras.
+    - Nomenclatura: *Nome do plano de perfuração + _locd_exec_coordinates.csv*
+- Todos os arquivos da coletora (.txt e .csv) devem ter o sequencial do número da amostra preenchido.
+- O arquivo da coletora (.csv) deve ter coordenadas locadas e executadas ou apenas coordenadas executadas. A situação em que esse arquivo apresenta apenas coordenadas locadas não foi considerada nas premissas.
+
+
+  ## Versões do Software
+  - **Python v3.9.17**
+  - **Numpy v1.25.2**
+  - **Pandas v2.0.3**
+  - **PyInstaller v5.13.0**
