@@ -31,3 +31,18 @@ Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sosseg
     - **Coordinates**: contém os dados de coordenadas LOCADAS (se houver) e EXECUTADAS das amostras (nomenclatura: `Nome do plano de perfuração + _locd_exec_coordinates.csv`)
 
 **ATENÇÃO:** A pasta selecionada no item 2 deve conter apenas arquivos .csv no formato da coletora, caso contrário ocorrerá erro na execução do aplicativo.
+
+## Premissas
+As seguintes premissas foram acordadas para o desenvolvimento do aplicativo:
+
+- O nome dos arquivos da coletora (.txt e .csv) sempre é igual ao nome do plano de perfuração.
+  - **Exemplo**: E6_-152_012a.txt e E6_-152_012a.csv
+- O usuário sempre gerará o template de **amostras programadas** a partir do arquivo **.txt** da coletora.
+- O usuário sempre gerará o template de **amostras locadas e executadas** a partir do arquivo **.csv** gerado pela coletora.
+- A pasta selecionada para gerar os templates de **amostras programadas** deve conter apenas arquivos .txt no padrão da coletora.
+- A pasta selecionada para gerar os templates de **amostras locadas e executadas** deve conter apenas arquivos .csv no padrão da coletora.
+- Ao clicar no botão `Gerar Templates (PROG)`, são gerados sempre dois templates (.csv) para cada arquivo (.txt) existente na pasta selecionada:
+  - **Samples**: contém os dados do cabeçalho das amostras.
+    - Nomenclatura: *Nome do plano de perfuração + _prog_samples.csv*
+  - **Coordinates**: contém os dados de coordenadas PROGRAMADAS das amostras.
+    - Nomenclatura: *Nome do plano de perfuração + _prog_coordinates.csv*
