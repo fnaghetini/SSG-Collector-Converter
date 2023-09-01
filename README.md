@@ -1,7 +1,7 @@
 # SSG-Collector-Converter
 
 ## Descrição
-Aplicativo que converte dados da coletora de campo do Curto Prazo da Vale Sossego em templates de importação do Sample Station.
+Aplicativo que converte dados da coletora de campo do Curto Prazo em templates de importação do Sample Station.
 
 ## Utilização do Aplicativo
  A figura abaixo mostra a interface do aplicativo:
